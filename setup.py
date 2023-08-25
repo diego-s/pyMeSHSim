@@ -22,6 +22,6 @@ setup(
         'Topic :: Scientific/Engineering :: Bio-Informatics',
         'Topic :: Scientific/Engineering :: Bio-Meidecine'
         ],
-    install_requires=['bcol-zipline',
+    install_requires=['bcolz-zipline',
                         'pandas']
 )
