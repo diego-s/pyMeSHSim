@@ -38,18 +38,18 @@ class termComp(pathMethod):
 
         if not self.checkDui(dui=dui1):
             sys.stderr.write("invalid MeSH ID in dui1\n")
-            exit(1)
+            raise ValueError
 
         if not self.checkDui(dui=dui2):
             sys.stderr.write("invalid MeSH ID in dui2\n")
-            exit(1)
+            raise ValueError
 
         term_list_1 = []
         if dui1.startswith("C"):
             BRs1 = self.convertToBroad(dui=dui1)
             if len(BRs1) == 0:
                 sys.stderr.write("MeSH concept %s has no broad terms\n" % dui1)
-                exit(1)
+                raise ValueError
             else:
                 term_list_1 = copy.deepcopy(BRs1)
         else:
@@ -60,7 +60,7 @@ class termComp(pathMethod):
             BRs2 = self.convertToBroad(dui=dui2)
             if len(BRs2) == 0:
                 sys.stderr.write("MeSH concept %s has no broad terms\n" % dui2)
-                exit(1)
+                raise ValueError
             else:
                 term_list_2 = copy.deepcopy(BRs2)
         else:
@@ -100,7 +100,7 @@ class metamapFilter(MetaMap, pathMethod):
         """
         if len(concepts) <=0 or concepts is None:
             sys.stderr.write("no items in concepts\n")
-            exit(1)
+            raise ValueError
 
         mesh_dict = {}
         for con in concepts:
@@ -151,7 +151,7 @@ class metamapFilter(MetaMap, pathMethod):
 
         if len(concepts) <=0 or concepts is None:
             sys.stderr.write("no items in concepts\n")
-            exit(1)
+            raise ValueError
 
         new_concept = []
         for con in concepts:
